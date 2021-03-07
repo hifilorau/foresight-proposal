@@ -8,8 +8,9 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import InstructionDialog from "./dialogs/InstructionDialog";
 import SwipeDialog from "./dialogs/SwipeDialog";
-
 import Topbar from "./Topbar";
+import { ListItem } from '@material-ui/core';
+import Wizard from "./Wizard"
 
 const backgroundShape = require("../images/shape.svg");
 
@@ -129,101 +130,25 @@ class Main extends Component {
               container
               className={classes.grid}
             >
-              <Grid item xs={12} md={4}>
-                <Paper className={classes.paper}>
-                  <div className={classes.box}>
-                    <Typography
-                      style={{ textTransform: "uppercase" }}
-                      color="secondary"
-                      gutterBottom
-                    >
-                      First title
-                    </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      A first title style <br /> with two lines
-                    </Typography>
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      className={classes.actionButtom}
-                    >
-                      Learn more
-                    </Button>
-                  </div>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Paper className={classes.paper}>
-                  <div className={classes.box}>
-                    <Typography
-                      style={{ textTransform: "uppercase" }}
-                      color="secondary"
-                      gutterBottom
-                    >
-                      Another box
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                      A default box
-                    </Typography>
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      className={classes.actionButtom}
-                    >
-                      Learn more
-                    </Button>
-                  </div>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Paper className={classes.paper}>
-                  <div className={classes.box}>
-                    <Typography
-                      style={{ textTransform: "uppercase" }}
-                      color="secondary"
-                      gutterBottom
-                    >
-                      A box with a carousel
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                      If you click in Getting Started, you will see a nice
-                      carousel
-                    </Typography>
-                  </div>
-                  <div className={classes.alignRight}>
-                    <Button
-                      onClick={this.openDialog}
-                      variant="outlined"
-                      className={classes.actionButtom}
-                    >
-                      Learn more
-                    </Button>
-                    <Button
-                      onClick={this.openGetStartedDialog}
-                      color="primary"
-                      variant="contained"
-                      className={classes.actionButtom}
-                    >
-                      Dashboard
-                    </Button>
-                  </div>
-                </Paper>
-              </Grid>
+             
               <Grid container item xs={12}>
                 <Grid item xs={12}>
                   <Paper className={classes.paper}>
                     <div>
-                      <div className={classes.box}>
-                        <Typography color="secondary" gutterBottom>
-                          Full box
-                        </Typography>
-                        <Typography variant="body1" gutterBottom>
-                          This is an example of a full-width box
-                        </Typography>
+                      <div className='new-box'>
+                      <Typography
+                      style={{ textTransform: "uppercase" }}
+                      color="secondary"
+                      gutterBottom
+                    >
+                      Overview
+                    </Typography>
+                    <Typography variant="h6" gutterBottom>
+                      Beyond the Campus Store: The Future of the University Campus Store and the NACS, 2021-2031
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                    Changes in our education and commerce industries are reshaping how the campus store fits into the lives of students and universities. NACS is looking to for insight and to better understand the multiple landscapes of the future and how it can best position itself to provide value to a vast network of campus stores that universities, students, and professors so much rely on. 
+                    </Typography>
                       </div>
                       <div className={classes.alignRight}>
                         <Button
@@ -238,6 +163,96 @@ class Main extends Component {
                   </Paper>
                 </Grid>
               </Grid>
+
+              <Grid container item xs={12}>
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}>
+                    <div>
+                      <div className='new-box'>
+                      <Typography
+                      style={{ textTransform: "uppercase" }}
+                      color="secondary"
+                      gutterBottom
+                    >
+                      Goals
+                    </Typography>
+
+                    <ListItem>
+                      <Typography variant="body1" gutterBottom>
+                      Provide insight and depth into the key, issues, drivers, and uncertainties that most likely could impact the future of NACS for the next 10 years.  
+                      </Typography>
+                    </ListItem>
+                   
+                    <ListItem>
+                      <Typography variant="body1" gutterBottom>
+                      Develop and implement a living library of articles/scans that will help the NACS monitor and watch for disruptive trends that will affect the industry for the next 25 years. 
+                      </Typography>
+                    </ListItem>
+                    
+                    <ListItem>
+                      <Typography variant="body1" gutterBottom>
+                      Help seed, nurture, and champion a culture of strategic foresight at NACS so that the deliverables and insights we provide can continue to be built and iterated upon from within the organization in the future 
+                      </Typography>
+                    </ListItem>
+                    </div>
+                  </div>
+                  </Paper>
+                </Grid>
+              </Grid>
+
+              <Grid container item xs={12}>
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}>
+                  <Typography
+                      style={{ textTransform: "uppercase" }}
+                      color="secondary"
+                      gutterBottom
+                    >
+                      Process and Schedule
+                    </Typography>
+                    <Wizard />
+                  </Paper>
+                </Grid>
+              </Grid>
+
+              <Grid container item xs={12}>
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}>
+                  <Typography
+                      style={{ textTransform: "uppercase" }}
+                      color="secondary"
+                      gutterBottom
+                    >
+                      Deliverables
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                      In addition to the items listed in the above table we will provide a final report, in electronic, print, and interactive online versions that contains all of our research in an easily digestible way. 
+                    </Typography>
+                    <Typography
+                      style={{ textTransform: "uppercase" }}
+                      color="secondary"
+                      gutterBottom
+                    >
+                      Cost
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                      $45,000
+                    </Typography>
+                  </Paper>
+                </Grid>
+              </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
             </Grid>
           </Grid>
           <SwipeDialog

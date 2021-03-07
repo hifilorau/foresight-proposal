@@ -130,16 +130,16 @@ class Topbar extends Component {
                 <Typography variant="h6" color="inherit" noWrap>
                   <Link to="/" className={classes.link}>
                     <img width={20} src={logo} alt="" />
-                    <span className={classes.tagline}>Material Sense</span>
+                    <span className={classes.tagline}>My Company Brand</span>
                   </Link>
                 </Typography>
               </div>
               {!this.props.noTabs && (
                 <React.Fragment>
                   <div className={classes.productLogo}>
-                    <Typography>A material UI Template</Typography>
+                    <Typography>Strategic Foresight Proposal for the NACS</Typography>
                   </div>
-                  <div className={classes.iconContainer}>
+                  {/* <div className={classes.iconContainer}>
                     <IconButton
                       onClick={this.mobileMenuOpen}
                       className={classes.iconButton}
@@ -201,8 +201,8 @@ class Topbar extends Component {
                           label={item.label}
                         />
                       ))}
-                    </Tabs>
-                  </div>
+                    </Tabs> */}
+                  {/* </div> */}
                 </React.Fragment>
               )}
             </Grid>

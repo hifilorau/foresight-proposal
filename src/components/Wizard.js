@@ -17,6 +17,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Back from "./common/Back";
+import Deliverable from "./Deliverable"
 
 const qs = require("query-string");
 const backgroundShape = require("../images/shape.svg");
@@ -93,7 +94,7 @@ const styles = theme => ({
 });
 
 const getSteps = () => {
-  return ["Info", "Bank", "Loan details", "Terms", "Confirm", "Done"];
+  return ["Discovery", "Mapping", "Scanning", "Identifying", "Scenarios", "Analysis", "Strategies", "Workshop"];
 };
 
 class Wizard extends Component {
@@ -134,13 +135,13 @@ class Wizard extends Component {
   };
 
   stepActions() {
-    if (this.state.activeStep === 3) {
-      return "Accept";
-    }
-    if (this.state.activeStep === 4) {
-      return "Send";
-    }
-    if (this.state.activeStep === 5) {
+    // if (this.state.activeStep === 3) {
+    //   return "Accept";
+    // }
+    // if (this.state.activeStep === 4) {
+    //   return "Send";
+    // }
+    if (this.state.activeStep === 7) {
       return "Done";
     }
     return "Next";
@@ -164,8 +165,9 @@ class Wizard extends Component {
 
     return (
       <React.Fragment>
-        <CssBaseline />
-        <div className={classes.root}>
+        {/* <CssBaseline />
+        <div className={classes.root}> */}
+      
           <Grid container justify="center">
             <Grid
               spacing={10}
@@ -202,10 +204,10 @@ class Wizard extends Component {
                               style={{ fontWeight: "bold" }}
                               gutterBottom
                             >
-                              Information
+                              Discovery
                             </Typography>
                             <Typography variant="body1" gutterBottom>
-                              General information about the service
+                              Initial Interview with 3-5 stakeholders to get a better understanding of the domain and challenges NACS is facing
                             </Typography>
                           </div>
                           <div>
@@ -225,10 +227,10 @@ class Wizard extends Component {
                               color="secondary"
                               gutterBottom
                             >
-                              User
+                              Schedule
                             </Typography>
                             <Typography variant="h5" gutterBottom>
-                              John Doe
+                              1 Week
                             </Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -237,10 +239,10 @@ class Wizard extends Component {
                               color="secondary"
                               gutterBottom
                             >
-                              City
+                              Deliverable
                             </Typography>
                             <Typography variant="h5" gutterBottom>
-                              Tokyo
+                              N/A
                             </Typography>
                           </Grid>
                         </Grid>
@@ -248,398 +250,76 @@ class Wizard extends Component {
                     </div>
                   )}
                   {activeStep === 1 && (
-                    <div className={classes.smallContainer}>
-                      <Paper className={classes.paper}>
-                        <div>
-                          <div style={{ marginBottom: 32 }}>
-                            <Typography
-                              variant="subtitle1"
-                              style={{ fontWeight: "bold" }}
-                              gutterBottom
-                            >
-                              Bank information
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                              Select account to receive the money
-                            </Typography>
-                          </div>
-                          <div style={{ marginBottom: 32 }}>
-                            <Typography
-                              style={{ textTransform: "uppercase" }}
-                              color="secondary"
-                              gutterBottom
-                            >
-                              Bank
-                            </Typography>
-                            <Typography variant="h5" gutterBottom>
-                              N26
-                            </Typography>
-                          </div>
-                          <div>
-                            <Typography
-                              style={{
-                                textTransform: "uppercase",
-                                marginBottom: 20
-                              }}
-                              color="secondary"
-                              gutterBottom
-                            >
-                              Receiving account
-                            </Typography>
-                            <FormControl
-                              variant="outlined"
-                              className={classes.formControl}
-                            >
-                              <Select
-                                value={this.state.receivingAccount}
-                                onChange={this.handleChange}
-                                input={
-                                  <OutlinedInput
-                                    labelWidth={this.state.labelWidth}
-                                    name="receivingAccount"
-                                  />
-                                }
-                              >
-                                <MenuItem value="">
-                                  <em></em>
-                                </MenuItem>
-                                <MenuItem value={"0297 00988200918"}>
-                                  First account
-                                </MenuItem>
-                                <MenuItem value={"0235 00235233332"}>
-                                  Second account
-                                </MenuItem>
-                                <MenuItem value={"1256 00864222212"}>
-                                  Third account
-                                </MenuItem>
-                              </Select>
-                            </FormControl>
-                          </div>
-                        </div>
-                      </Paper>
-                    </div>
+                 
+                      <Deliverable 
+                        classes={classes}
+                        title="Mapping"
+                        description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                        "
+                        schedule="4 weeks"
+                        deliverable="Domain Map & Relevant High Level Systems Maps"
+                      
+                      />
+                    
                   )}
                   {activeStep === 2 && (
-                    <div className={classes.bigContainer}>
-                      <Paper className={classes.paper}>
-                        <div className={classes.topInfo}>
-                          <div>
-                            <Typography
-                              variant="subtitle1"
-                              style={{ fontWeight: "bold" }}
-                              gutterBottom
-                            >
-                              Details
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                              We need some details about any information
-                            </Typography>
-                          </div>
-                          <div>
-                            <Button
-                              variant="outlined"
-                              size="large"
-                              className={classes.outlinedButtom}
-                            >
-                              Edit
-                            </Button>
-                          </div>
-                        </div>
-                        <div className={classes.borderColumn}>
-                          <Grid
-                            item
-                            container
-                            xs={12}
-                            style={{ marginBottom: 32 }}
-                          >
-                            <Grid item xs={6}>
-                              <Typography
-                                style={{ textTransform: "uppercase" }}
-                                color="secondary"
-                                gutterBottom
-                              >
-                                Amount
-                              </Typography>
-                              <Typography variant="h5" gutterBottom>
-                                {parsed
-                                  ? numeral(parsed.amount).format()
-                                  : "75,000"}{" "}
-                                DKK
-                              </Typography>
-                            </Grid>
-                            <Grid item xs={6}>
-                              <Typography
-                                style={{ textTransform: "uppercase" }}
-                                color="secondary"
-                                gutterBottom
-                              >
-                                Total fees
-                              </Typography>
-                              <Typography variant="h5" gutterBottom>
-                                0 DKK
-                              </Typography>
-                            </Grid>
-                          </Grid>
-                          <Grid item container xs={12}>
-                            <Grid item xs={6}>
-                              <Typography
-                                style={{ textTransform: "uppercase" }}
-                                color="secondary"
-                                gutterBottom
-                              >
-                                Total price
-                              </Typography>
-                              <Typography variant="h5" gutterBottom>
-                                {parsed
-                                  ? numeral(parsed.interest).format()
-                                  : "6,600"}{" "}
-                                USD
-                              </Typography>
-                            </Grid>
-                            <Grid item xs={6}>
-                              <Typography
-                                style={{ textTransform: "uppercase" }}
-                                color="secondary"
-                                gutterBottom
-                              >
-                                Total cost
-                              </Typography>
-                              <Typography variant="h5" gutterBottom>
-                                {parsed
-                                  ? numeral(parsed.cost).format()
-                                  : "81,600"}{" "}
-                                USD
-                              </Typography>
-                            </Grid>
-                          </Grid>
-                        </div>
-                        <Grid item container xs={12}>
-                          <Grid
-                            item
-                            container
-                            xs={12}
-                            style={{ marginBottom: 32 }}
-                          >
-                            <Grid item xs={6}>
-                              <Typography
-                                style={{ textTransform: "uppercase" }}
-                                color="secondary"
-                                gutterBottom
-                              >
-                                How often
-                              </Typography>
-                              <Typography variant="h5" gutterBottom>
-                                Once a month
-                              </Typography>
-                            </Grid>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <Typography
-                              style={{ textTransform: "uppercase" }}
-                              color="secondary"
-                              gutterBottom
-                            >
-                              When to start
-                            </Typography>
-                            <Typography variant="h5" gutterBottom>
-                              01 February 2019
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <Typography
-                              style={{ textTransform: "uppercase" }}
-                              color="secondary"
-                              gutterBottom
-                            >
-                              When it ends?
-                            </Typography>
-                            <Typography variant="h5" gutterBottom>
-                              01 May 2019
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                        <Grid item container xs={12} style={{ marginTop: 24 }}>
-                          <Grid item xs={6}>
-                            <Typography
-                              style={{
-                                textTransform: "uppercase",
-                                marginBottom: 20
-                              }}
-                              color="secondary"
-                              gutterBottom
-                            >
-                              Destination account
-                            </Typography>
-                            <FormControl
-                              variant="outlined"
-                              className={classes.formControl}
-                            >
-                              <Select
-                                value={this.state.repaimentAccount}
-                                onChange={this.handleChange}
-                                input={
-                                  <OutlinedInput
-                                    labelWidth={this.state.labelWidth}
-                                    name="repaimentAccount"
-                                  />
-                                }
-                              >
-                                <MenuItem value="">
-                                  <em></em>
-                                </MenuItem>
-                                <MenuItem value={"0297 00988200918"}>
-                                  Account one
-                                </MenuItem>
-                                <MenuItem value={"0235 00235233332"}>
-                                  Account two
-                                </MenuItem>
-                                <MenuItem value={"1256 00864222212"}>
-                                  Other account
-                                </MenuItem>
-                              </Select>
-                            </FormControl>
-                          </Grid>
-                        </Grid>
-                      </Paper>
-                    </div>
+                    <Deliverable 
+                    classes={classes}
+                    title="Scanning"
+                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                    "
+                    schedule="4 weeks"
+                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
                   )}
                   {activeStep === 3 && (
-                    <div className={classes.bigContainer}>
-                      <Paper className={classes.paper}>
-                        <div style={{ marginBottom: 24 }}>
-                          <Typography
-                            variant="subtitle1"
-                            style={{ fontWeight: "bold" }}
-                            gutterBottom
-                          >
-                            Terms & Conditions
-                          </Typography>
-                          <Typography variant="body1" gutterBottom>
-                            Please read through and accept the terms &
-                            conditions
-                          </Typography>
-                        </div>
-                        <div
-                          style={{
-                            height: 330,
-                            padding: 16,
-                            border: "2px solid #ccc",
-                            borderRadius: "3px",
-                            overflowY: "scroll"
-                          }}
-                        >
-                          <Typography
-                            variant="subtitle1"
-                            style={{ fontWeight: "bold" }}
-                            gutterBottom
-                          >
-                            1. Your agreement
-                          </Typography>
-                          <Typography variant="body1" gutterBottom>
-                            By using this Site, you agree to be bound by, and to
-                            comply with, these Terms and Conditions. If you do
-                            not agree to these Terms and Conditions, please do
-                            not use this site. PLEASE NOTE: We reserve the
-                            right, at our sole discretion, to change, modify or
-                            otherwise alter these Terms and Conditions at any
-                            time. Unless otherwise indicated, amendments will
-                            become effective immediately. Please review these
-                            Terms and Conditions periodically. Your continued
-                            use of the Site following the posting of changes
-                            and/or modifications will constitute your acceptance
-                            of the revised Terms and Conditions and the
-                            reasonableness of these standards for notice of
-                            changes. For your information, this page was last
-                            updated as of the date at the top of these terms and
-                            conditions.
-                          </Typography>
-                          <Typography
-                            variant="subtitle1"
-                            style={{ fontWeight: "bold" }}
-                            gutterBottom
-                          >
-                            2. Privacy
-                          </Typography>
-                          <Typography variant="body1" gutterBottom>
-                            Please review our Privacy Policy, which also governs
-                            your visit to this Site, to understand our
-                            practices. By using this Site, you agree to be bound
-                            by, and to comply with, these Terms and Conditions.
-                            If you do not agree to these Terms and Conditions,
-                            please do not use this site. PLEASE NOTE: We reserve
-                            the right, at our sole discretion, to change, modify
-                            or otherwise alter these Terms and Conditions at any
-                            time. Unless otherwise indicated, amendments will
-                            become effective immediately. Please review these
-                            Terms and Conditions periodically. Your continued
-                            use of the Site following the posting of changes
-                            and/or modifications will constitute your acceptance
-                            of the revised Terms and Conditions and the
-                            reasonableness of these standards for notice of
-                            changes. For your information, this page was last
-                            updated as of the date at the top of these terms and
-                            conditions.
-                          </Typography>
-                        </div>
-                        <FormGroup row>
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={this.state.termsChecked}
-                                onChange={this.handleTerms}
-                                value="check"
-                              />
-                            }
-                            label="I have read and understood the terms & conditions"
-                          />
-                        </FormGroup>
-                      </Paper>
-                    </div>
+                    <Deliverable 
+                    classes={classes}
+                    title="Identifying"
+                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                    "
+                    schedule="4 weeks"
+                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
                   )}
-                  {activeStep === 4 && (
-                    <div className={classes.smallContainer}>
-                      <Paper className={classes.paper}>
-                        <Grid item container xs={12}>
-                          <Grid item xs={12}>
-                            <Typography
-                              variant="subtitle1"
-                              style={{ fontWeight: "bold" }}
-                              gutterBottom
-                            >
-                              Sign & confirm
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                              Sign and confirm your agreement
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Paper>
-                    </div>
+                   {activeStep === 4 && (
+                    <Deliverable 
+                    classes={classes}
+                    title="Scenarios"
+                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                    "
+                    schedule="4 weeks"
+                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
                   )}
-                  {(activeStep === 5 || activeStep === 6) && (
-                    <div className={classes.smallContainer}>
-                      <Paper className={classes.paper}>
-                        <Grid item container xs={12}>
-                          <Grid item xs={12}>
-                            <Typography variant="subtitle1" gutterBottom>
-                              Congratulations{" "}
-                              <span role="img" aria-label="conrats emoji">
-                                🎉
-                              </span>
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                              We have now a positive response
-                            </Typography>
-                            <Button fullWidth variant="outlined">
-                              Download the service invoice or whatever
-                            </Button>
-                          </Grid>
-                        </Grid>
-                      </Paper>
-                    </div>
+                  {activeStep === 5 && (
+                    <Deliverable 
+                    classes={classes}
+                    title="Analysis"
+                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                    "
+                    schedule="4 weeks"
+                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
                   )}
+                  {activeStep === 6 && (
+                    <Deliverable 
+                    classes={classes}
+                    title="Strategies"
+                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                    "
+                    schedule="4 weeks"
+                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
+                  )}
+                  {activeStep === 7 && (
+                    <Deliverable 
+                    classes={classes}
+                    title="Workshop"
+                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                    "
+                    schedule="4 weeks"
+                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
+                  )}
+
+                   
                   <div className={classes.flexBar}>
-                    {activeStep !== 5 && (
+                    {activeStep !== 0 && (
                       <Button
                         disabled={activeStep === 0}
                         onClick={this.handleBack}
@@ -648,17 +328,17 @@ class Wizard extends Component {
                       >
                         Back
                       </Button>
-                    )}
+                    )} 
                     <Button
                       variant="contained"
                       color="primary"
                       onClick={
-                        activeStep !== 5 ? this.handleNext : this.goToDashboard
+                        activeStep !== 7 ? this.handleNext : null
                       }
                       size="large"
-                      disabled={
-                        this.state.activeStep === 3 && !this.state.termsChecked
-                      }
+                      // disabled={
+                      //   this.state.activeStep === 3 && !this.state.termsChecked
+                      // }
                     >
                       {this.stepActions()}
                     </Button>
@@ -667,10 +347,11 @@ class Wizard extends Component {
               </Grid>
             </Grid>
           </Grid>
-        </div>
+        {/* </div> */}
       </React.Fragment>
     );
   }
 }
 
 export default withRouter(withStyles(styles)(Wizard));
+
