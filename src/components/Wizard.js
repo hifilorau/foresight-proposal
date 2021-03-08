@@ -179,7 +179,7 @@ class Wizard extends Component {
               <Grid item xs={12}>
                 <Back />
                 <div className={classes.stepContainer}>
-                  <div className={classes.bigContainer}>
+                  <div className={`${classes.bigContainer} process-class`}>
                     <Stepper
                       classes={{ root: classes.stepper }}
                       activeStep={activeStep}
@@ -211,13 +211,7 @@ class Wizard extends Component {
                             </Typography>
                           </div>
                           <div>
-                            <Button
-                              variant="outlined"
-                              size="large"
-                              className={classes.outlinedButtom}
-                            >
-                              Edit
-                            </Button>
+                      
                           </div>
                         </div>
                         <Grid item container xs={12}>

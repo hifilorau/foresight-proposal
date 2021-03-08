@@ -32,15 +32,7 @@ const Deliverable = ({title, description, schedule, deliverable, classes}) => {
               {description}
             </Typography>
           </div>
-          <div>
-            <Button
-              variant="outlined"
-              size="large"
-              className={classes.outlinedButtom}
-            >
-              Edit
-            </Button>
-          </div>
+        
         </div>
         <Grid item container xs={12}>
           <Grid item xs={6}>

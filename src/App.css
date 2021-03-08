@@ -30,3 +30,16 @@
     transform: rotate(360deg);
   }
 }
+
+.process-class .MuiStepper-root {
+  flex-wrap: wrap;
+}
+
+
+.MuiStepConnector-line {
+  display: none !important;
+}
+
+.MuiStep-root {
+  margin-bottom: 10px;
+}

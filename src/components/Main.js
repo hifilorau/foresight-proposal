@@ -9,9 +9,11 @@ import Button from "@material-ui/core/Button";
 import InstructionDialog from "./dialogs/InstructionDialog";
 import SwipeDialog from "./dialogs/SwipeDialog";
 import Topbar from "./Topbar";
-import { ListItem } from '@material-ui/core';
+import { ListItem, Icon } from '@material-ui/core';
+import GetApp from '@material-ui/icons/GetApp';
 import Wizard from "./Wizard"
-
+const timeline = require("../images/timeline.png");
+const pdf = require("../images/test-pdf.pdf");
 const backgroundShape = require("../images/shape.svg");
 
 const styles = theme => ({
@@ -136,18 +138,32 @@ class Main extends Component {
                   <Paper className={classes.paper}>
                     <div>
                       <div className='new-box'>
-                      <Typography
-                      style={{ textTransform: "uppercase" }}
-                      color="secondary"
-                      gutterBottom
-                    >
-                      Overview
-                    </Typography>
+                        <div style={{
+                          display: 'flex'
+                        }}>
+                          <Typography
+                          style={{ textTransform: "uppercase" }}
+                          color="secondary"
+                          gutterBottom
+                        >
+                          Overview
+                        </Typography>
+                        <div className="download">
+                          <a href={pdf} style={{
+                            color:'#0d47a1', 
+                            position: 'relative',
+                            left: '5px',
+                            top: '2px'
+                            }}  download>
+                            <GetApp style={{color:'#0d47a1' }} />
+                          </a>
+                        </div>
+                    </div>
                     <Typography variant="h6" gutterBottom>
                       Beyond the Campus Store: The Future of the University Campus Store and the NACS, 2021-2031
                     </Typography>
                     <Typography variant="body1" gutterBottom>
-                    Changes in our education and commerce industries are reshaping how the campus store fits into the lives of students and universities. NACS is looking to for insight and to better understand the multiple landscapes of the future and how it can best position itself to provide value to a vast network of campus stores that universities, students, and professors so much rely on. 
+                    New ways to share, access, and teach educational materials, as well as shop and show love for the university experience are reshaping how the campus store fits into the lives of students, professors, universities, and communities. NACS is looking to for insight and to better understand the dynamic landscapes of the future and how it can best position itself to provide value to a vast network of campus stores that universities, students, and professors so much rely on. 
                     </Typography>
                       </div>
                       <div className={classes.alignRight}>
@@ -228,6 +244,17 @@ class Main extends Component {
                     <Typography variant="body1" gutterBottom>
                       In addition to the items listed in the above table we will provide a final report, in electronic, print, and interactive online versions that contains all of our research in an easily digestible way. 
                     </Typography>
+                    <br />
+                    <Typography
+                      style={{ textTransform: "uppercase" }}
+                      color="secondary"
+                      gutterBottom
+                    >
+                      Timeline
+                    </Typography>
+                    <div className="timeline">
+                      <img src={timeline} />
+                    </div>
                     <Typography
                       style={{ textTransform: "uppercase" }}
                       color="secondary"
