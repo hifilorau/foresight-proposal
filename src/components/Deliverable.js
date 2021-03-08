@@ -15,9 +15,9 @@ import Select from "@material-ui/core/Select";
 import Back from "./common/Back";
 import Typography from "@material-ui/core/Typography";
 
-const Deliverable = ({title, description, schedule, deliverable, classes}) => {
+const Deliverable = ({title, description, schedule, deliverable, classes, label}) => {
   return (
-    <div className={classes.bigContainer}>
+    <div className={classes.bigContainer} style={{marginBottom: '1em'}}>
       <Paper className={classes.paper}>
         <div className={classes.topInfo}>
           <div>
@@ -25,7 +25,12 @@ const Deliverable = ({title, description, schedule, deliverable, classes}) => {
               variant="subtitle1"
               style={{ fontWeight: "bold" }}
               gutterBottom
-            >
+            > 
+                <div className="step-sublabel">
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+                </div>
               {title}
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -37,13 +42,13 @@ const Deliverable = ({title, description, schedule, deliverable, classes}) => {
         <Grid item container xs={12}>
           <Grid item xs={6}>
             <Typography
-              style={{ textTransform: "uppercase" }}
+              style={{ textTransform: "uppercase"}}
               color="secondary"
               gutterBottom
             >
               Schedule
             </Typography>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="body2" gutterBottom style={{fontWeight: 700 }}>
             {schedule}
             </Typography>
           </Grid>
@@ -55,7 +60,7 @@ const Deliverable = ({title, description, schedule, deliverable, classes}) => {
             >
               Deliverable
             </Typography>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="body2" gutterBottom style={{fontWeight: 700 }}>
             {deliverable}
             </Typography>
           </Grid>

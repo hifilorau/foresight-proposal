@@ -93,7 +93,7 @@ const styles = theme => ({
   }
 });
 
-class Main extends Component {
+class PDFView extends Component {
   state = {
     learnMoredialog: false,
     getStartedDialog: false
@@ -149,7 +149,7 @@ class Main extends Component {
                         >
                           Overview
                         </Typography>
-                        <div className="download">
+                        {/* <div className="download">
                           <Tooltip title="Download Print Version">
                           <a href={pdf} style={{
                             color:'#0d47a1', 
@@ -160,7 +160,7 @@ class Main extends Component {
                             <GetApp style={{color:'#0d47a1' }} />
                           </a>
                           </Tooltip>
-                        </div>
+                        </div> */}
                     </div>
                     <Typography variant="h6" gutterBottom>
                       Beyond the Campus Store: The Future of the University Campus Store and the NACS, 2021-2031
@@ -169,15 +169,7 @@ class Main extends Component {
                     New ways to share, access, and teach educational materials, as well as shop and show love for the university experience are reshaping how the campus store fits into the lives of students, professors, universities, and communities. NACS is looking to for insight and to better understand the dynamic landscapes of the future and how it can best position itself to provide value to a vast network of campus stores that universities, students, and professors so much rely on. 
                     </Typography>
                       </div>
-                      <div className={classes.alignRight}>
-                        <Button
-                          color="primary"
-                          variant="contained"
-                          className={classes.actionButtom}
-                        >
-                          Learn more
-                        </Button>
-                      </div>
+                 
                     </div>
                   </Paper>
                 </Grid>
@@ -272,17 +264,6 @@ class Main extends Component {
                 </Grid>
               </Grid>
 
-
-
-
-
-
-
-
-
-
-
-
             </Grid>
           </Grid>
           <SwipeDialog
@@ -299,4 +280,4 @@ class Main extends Component {
   }
 }
 
-export default withRouter(withStyles(styles)(Main));
+export default withRouter(withStyles(styles)(PDFView));

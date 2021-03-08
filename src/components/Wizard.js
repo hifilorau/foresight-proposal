@@ -17,6 +17,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Back from "./common/Back";
+import { useLocation } from 'react-router-dom';
 import Deliverable from "./Deliverable"
 
 const qs = require("query-string");
@@ -162,6 +163,10 @@ class Wizard extends Component {
     const parsed = queryString ? qs.parse(queryString) : {};
     const steps = getSteps();
     const { activeStep } = this.state;
+    const {pathname} = this.props.location;
+    console.log('route', pathname);
+    let isPDF = pathname === "/pdf-view" ? true : false;
+    console.log(isPDF, activeStep)
 
     return (
       <React.Fragment>
@@ -182,7 +187,7 @@ class Wizard extends Component {
                   <div className={`${classes.bigContainer} process-class`}>
                     <Stepper
                       classes={{ root: classes.stepper }}
-                      activeStep={activeStep}
+                      activeStep={isPDF ? null : activeStep}
                       alternativeLabel
                     >
                       {steps.map(label => {
@@ -194,58 +199,22 @@ class Wizard extends Component {
                       })}
                     </Stepper>
                   </div>
-                  {activeStep === 0 && (
-                    <div className={classes.bigContainer}>
-                      <Paper className={classes.paper}>
-                        <div className={classes.topInfo}>
-                          <div>
-                            <Typography
-                              variant="subtitle1"
-                              style={{ fontWeight: "bold" }}
-                              gutterBottom
-                            >
-                              Discovery
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                              Initial Interview with 3-5 stakeholders to get a better understanding of the domain and challenges NACS is facing
-                            </Typography>
-                          </div>
-                          <div>
+                  {(activeStep === 0 || isPDF) && (
+                
+                        <Deliverable 
+                        label="1"
+                        classes={classes}
+                        title="Discovery"
+                        description=" Initial Interview with 3-5 stakeholders to get a better understanding of the domain and challenges NACS is facing"
+                        schedule="4 weeks"
+                        deliverable="N/A"
                       
-                          </div>
-                        </div>
-                        <Grid item container xs={12}>
-                          <Grid item xs={6}>
-                            <Typography
-                              style={{ textTransform: "uppercase" }}
-                              color="secondary"
-                              gutterBottom
-                            >
-                              Schedule
-                            </Typography>
-                            <Typography variant="h5" gutterBottom>
-                              1 Week
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <Typography
-                              style={{ textTransform: "uppercase" }}
-                              color="secondary"
-                              gutterBottom
-                            >
-                              Deliverable
-                            </Typography>
-                            <Typography variant="h5" gutterBottom>
-                              N/A
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                      </Paper>
-                    </div>
+                      />
                   )}
-                  {activeStep === 1 && (
+                  {(activeStep === 1 || isPDF) && (
                  
                       <Deliverable 
+                        label="2"
                         classes={classes}
                         title="Mapping"
                         description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
@@ -256,64 +225,67 @@ class Wizard extends Component {
                       />
                     
                   )}
-                  {activeStep === 2 && (
+                  {(activeStep === 2 || isPDF) &&  (
                     <Deliverable 
+                    label="3"
                     classes={classes}
                     title="Scanning"
-                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                    description="Building a scanning archive of trends, articles, reports, signals, and plans.
                     "
                     schedule="4 weeks"
-                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
+                    deliverable="Searchable, Filterable, Scored Scanning Library"/>
                   )}
-                  {activeStep === 3 && (
+                  {(activeStep === 3 || isPDF)  && (
                     <Deliverable 
+                    label="4"
                     classes={classes}
-                    title="Identifying"
-                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
+                    title="Identify"
+                    description="Identifying and analyzing key trends, drivers, issues, and uncertainties that will affect the business of the college store and the services that both it and that NACS can provide it.
                     "
-                    schedule="4 weeks"
+                    schedule="2 weeks"
                     deliverable="Domain Map & Relevant High Level Systems Maps"/>
                   )}
-                   {activeStep === 4 && (
+                   {(activeStep === 4 || isPDF) && (
                     <Deliverable 
+                    label="5"
                     classes={classes}
                     title="Scenarios"
-                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
-                    "
+                    description="Develop scenarios outlining a spectrum of potential futures for the role of NCAS in the landscape of the college store and the education system."
                     schedule="4 weeks"
-                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
+                    deliverable="Scenario Guide that contains four scenarios and a range of potential futures"/>
                   )}
-                  {activeStep === 5 && (
+                  {(activeStep === 5 || isPDF)  && (
                     <Deliverable 
+                    label="6"
                     classes={classes}
                     title="Analysis"
-                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
-                    "
+                    description="Parse out dominant strategic issues and scan for potential sources where new risks, opportunities, and disruptions will emerge."
                     schedule="4 weeks"
                     deliverable="Domain Map & Relevant High Level Systems Maps"/>
                   )}
-                  {activeStep === 6 && (
-                    <Deliverable 
+                  {(activeStep === 6 || isPDF)  && (
+                    <Deliverable
+                    label="7"
                     classes={classes}
-                    title="Strategies"
-                    description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
-                    "
+                    title="Strategy"
+                    description="Synthesize strategies, routes to optimization, and actions and responses to plausible risks and opportunities"
                     schedule="4 weeks"
-                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
+                    deliverable="Strategy Guide"/>
                   )}
-                  {activeStep === 7 && (
-                    <Deliverable 
+                  {(activeStep === 7 || isPDF) && (
+                    <Deliverable
+                    label="8" 
                     classes={classes}
                     title="Workshop"
                     description="Mapping key categories and subcategories to gain a better understanding of the system dynamics.
                     "
-                    schedule="4 weeks"
-                    deliverable="Domain Map & Relevant High Level Systems Maps"/>
+                    schedule="Two Days"
+                    deliverable="Two One Day Workshops"/>
                   )}
 
-                   
+                  { !isPDF && (
                   <div className={classes.flexBar}>
-                    {activeStep !== 0 && (
+                    { activeStep !== 0 &&  (
                       <Button
                         disabled={activeStep === 0}
                         onClick={this.handleBack}
@@ -336,8 +308,8 @@ class Wizard extends Component {
                     >
                       {this.stepActions()}
                     </Button>
-                  </div>
-                </div>
+                  </div> )}
+                </div> 
               </Grid>
             </Grid>
           </Grid>

@@ -43,3 +43,31 @@
 .MuiStep-root {
   margin-bottom: 10px;
 }
+
+.step-sublabel {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  right: 5px;
+  top: 5px;
+  border-radius: 50%;
+  border: 1px solid #303f9f;
+}
+
+.step-sublabel .MuiStepLabel-label {
+  color: #303f9f !important;
+  position: relative;
+  top: 1px;
+}
+
+
+
+.Wizard-paper-220 {
+  position: relative;
+}
+
+.timeline img {
+  width: 100%;
+  height: auto;
+}
