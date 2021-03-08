@@ -13,7 +13,7 @@ import { ListItem, Tooltip } from '@material-ui/core';
 import GetApp from '@material-ui/icons/GetApp';
 import Wizard from "./Wizard"
 const timeline = require("../images/timeline.png");
-const pdf = require("../images/test-pdf.pdf");
+const pdf = require("../images/nacs_proposal_rau.pdf");
 const backgroundShape = require("../images/shape.svg");
 
 const styles = theme => ({
