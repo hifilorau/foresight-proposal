@@ -12,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.outer-logo {
+  font-size: 1.3em;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-family: 'Lato';
+}
+
+.inner-logo {
+  color: rgba(0,0,0,.1);
+  font-weight: 400;
+}

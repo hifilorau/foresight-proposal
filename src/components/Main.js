@@ -170,6 +170,7 @@ class Main extends Component {
                     </Typography>
                       </div>
                       <div className={classes.alignRight}>
+                        <a href="https://hifilorau.com" target="_blank">
                         <Button
                           color="primary"
                           variant="contained"
@@ -177,6 +178,7 @@ class Main extends Component {
                         >
                           Learn more
                         </Button>
+                        </a>
                       </div>
                     </div>
                   </Paper>
